@@ -1,5 +1,8 @@
 # coding: utf-8
 
+from abc import abstractmethod
+
+
 class Method_test(object):
     """ This is Test written by Bain"""
 
@@ -32,6 +35,11 @@ class Method_test(object):
         print "dict: %r" % cls.__dict__
         print "doc: %r" % cls.__doc__
         print "module: %r" % cls.__module__
+
+    @abstractmethod
+    def get_radius(self):
+        """This can be an abstract method"""
+        # raise NotImplementedError
 
 
 Method_test.scream()

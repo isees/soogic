@@ -33,7 +33,11 @@ pt = Property_Test()
 pt.class_method()
 Property_Test.static_method()
 print "stride_length=%r" % pt.stride_length
+
 pt.stride_length = 10
 print "stride_length=%r" % pt.stride_length
+
 del pt.stride_length
 print "stride_length=%r" % pt.stride_length
+
+print "stride_length=%r" % pt._stride_length

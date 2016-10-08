@@ -10,6 +10,6 @@ setup(
     include_package_datga=True,
     url='http://www.soogic.com/',
     author='Bain',
-    entry_points={'console_scripts': ['soogic = soogic.manage:cli.main']},
+    # entry_points={'console_scripts': ['soogic = soogic.manage:cli.main']},
     install_requires=requirements
 )

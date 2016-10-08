@@ -5,7 +5,7 @@ from sqlalchemy.ext.declarative import DeclarativeMeta as BaseDeclarativeMeta, d
 from sqlalchemy.orm import was_deleted
 
 
-class EqMixin:
+class EqMixin(object):
     """Compare and hash objects by custom values."""
 
     def compare_value(self):
@@ -34,7 +34,7 @@ class EqMixin:
         return hash(self.__class__) ^ hash(self.compare_value())
 
 
-class UniqueMixin:
+class UniqueMixin(object):
     """Keep a cache of unique instance in memory so new instances can be safely created in bulk before they are committed."""
 
     @classmethod
@@ -77,7 +77,7 @@ class DeclarativeMeta(BaseDeclarativeMeta):
             cls.__table__.info['bind_key'] = bind_key
 
 
-class Model:
+class Model(object):
     query_class = BaseQuery
 
     @declared_attr
@@ -120,7 +120,7 @@ class SGSQLAlchemy(BaseSQLAlchemy):
             'ix': 'ix_%(table_name)s_%(column_0_name)s',
             'ck': 'ck_%(table_name)s_%(constraint_name)s',
         })
-        base = declarative_base(metadata=metadata, cls=self.BaseModel, name='Model', metaclass=self.DeclarativeMeata)
+        base = declarative_base(metadata=metadata, cls=self.BaseModel, name='Model', metaclass=self.DeclarativeMeta)
         base.query = _QueryProperty(self)
         base.db = self
         return base
